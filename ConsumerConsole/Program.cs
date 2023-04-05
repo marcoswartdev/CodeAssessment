@@ -1,8 +1,10 @@
-﻿using RabbitMQ.Client.Exceptions;
+﻿using RabbitMQ.Client.Events;
+using RabbitMQ.Client.Exceptions;
 using RabbitMQ.Client;
+using System.Text.RegularExpressions;
 using System.Text;
 
-namespace ProducerConsole
+namespace ConsumerConsole
 {
     internal class Program
     {
@@ -23,16 +25,26 @@ namespace ProducerConsole
                     autoDelete: false,
                     arguments: null
                     );
-                string name = "";
-                Console.WriteLine("To close the program type exit");
-                do
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (sender, args) =>
                 {
-                    Console.WriteLine("Please enter your name: ");
-                    name = Console.ReadLine() ?? "";
-                    var body = Encoding.UTF8.GetBytes($"Hello my name is, {name}");
-                    channel.BasicPublish("", "send-name-queue", null, body);
-                } while (name.ToLower() != "exit");
+                    var body = args.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    var name = message.Substring(message.LastIndexOf(',') + 1).Trim();
+                    Regex namePattern = new Regex(@"^[a-zA-Z]+(?:[\s]+[a-zA-Z]+)*$");
+                    bool isNameValid = namePattern.IsMatch(name);
+                    if (isNameValid)
+                    {
+                        Console.WriteLine($"Hello {name}, I am your father!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{name} is not a valid name");
+                    }
+                };
 
+                channel.BasicConsume("send-name-queue", true, consumer);
+                Console.ReadLine();
             }
             catch (BrokerUnreachableException)
             {
