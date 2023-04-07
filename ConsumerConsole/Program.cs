@@ -1,6 +1,7 @@
 ﻿using ConsumerConsole.Repositories;
 using ConsumerConsole.UseCases;
 using MessageQueueLibrary.Implementations;
+using System.Configuration;
 
 namespace ConsumerConsole;
 
@@ -10,12 +11,12 @@ internal class Program
     {
         try
         {
+            string connectionURL = ConfigurationManager.AppSettings["ConnectionURL"]!;
+            string queueName = ConfigurationManager.AppSettings["QueueName"]!;
             ReadMessageUseCase readMessageUseCase = new ReadMessageUseCase(
                 new ReadMessageRepository(
                     new Consumer(
-                        new ConnectionWrapper("amqp://guest:guest@localhost:5672"),
-                        "send-name-queue"
-                        )
+                        new ConnectionWrapper(connectionURL),queueName)
                     )
                 );
             readMessageUseCase.Execute((message) => Console.WriteLine(message));

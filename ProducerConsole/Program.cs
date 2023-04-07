@@ -1,6 +1,7 @@
 ﻿using MessageQueueLibrary.Implementations;
 using ProducerConsole.Repositories;
 using ProducerConsole.UseCases;
+using System.Configuration;
 
 namespace ProducerConsole;
 
@@ -10,12 +11,12 @@ internal class Program
     {
         try
         {
+            string connectionURL = ConfigurationManager.AppSettings["ConnectionURL"]!;
+            string queueName = ConfigurationManager.AppSettings["QueueName"]!;
             SendMessageUseCase sendMessageUseCase = new SendMessageUseCase(
                 new SendMessageRepository(
                     new Producer(
-                        new ConnectionWrapper("amqp://guest:guest@localhost:5672"),
-                        "send-name-queue"
-                        )
+                        new ConnectionWrapper(connectionURL),queueName)
                     )
                 );
             string name;
