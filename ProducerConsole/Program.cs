@@ -1,30 +1,34 @@
 ﻿using MessageQueueLibrary.Implementations;
+using ProducerConsole.Repositories;
+using ProducerConsole.UseCases;
 
-namespace ProducerConsole
+namespace ProducerConsole;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        try
         {
-            try
+            SendMessageUseCase sendMessageUseCase = new SendMessageUseCase(
+                new SendMessageRepository(
+                    new Producer(
+                        new ConnectionWrapper("amqp://guest:guest@localhost:5672"),
+                        "send-name-queue"
+                        )
+                    )
+                );
+            string name;
+            while (true)
             {
-                ConnectionWrapper connection = new ConnectionWrapper("amqp://guest:guest@localhost:5672");
-                Producer producer = new Producer(connection,"send-name-queue");
-                string name = "";
-                Console.WriteLine("To close the program type exit");
-                do
-                {
-                    Console.WriteLine("Please enter your name: ");
-                    name = Console.ReadLine() ?? "";
-                    var message = $"Hello my name is, {name}";
-                    producer.SendMessage(message);
-                } while (name.ToLower() != "exit");
-
+                Console.WriteLine("Please enter your name: ");
+                name = Console.ReadLine() ?? "";
+                sendMessageUseCase.Execute(name);
             }
-            catch (Exception e)
-            {
-                Console.WriteLine($"An error occured - {e.Message}");
-            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"An error occured - {e.Message}");
         }
     }
 }

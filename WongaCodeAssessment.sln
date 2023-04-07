@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProducerConsole", "Producer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumerConsole", "ConsumerConsole\ConsumerConsole.csproj", "{9CC236B0-5BD8-4804-B615-F91868B0BD41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueueLibrary", "MessageQueueLibrary\MessageQueueLibrary.csproj", "{BED07DB2-AFB6-40A9-BAFD-BDAE9F73703B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageQueueLibrary", "MessageQueueLibrary\MessageQueueLibrary.csproj", "{BED07DB2-AFB6-40A9-BAFD-BDAE9F73703B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

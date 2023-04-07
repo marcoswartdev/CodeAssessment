@@ -1,40 +1,29 @@
-﻿using MessageQueueLibrary.Implementations;
-using System.Text.RegularExpressions;
+﻿using ConsumerConsole.Repositories;
+using ConsumerConsole.UseCases;
+using MessageQueueLibrary.Implementations;
 
-namespace ConsumerConsole
+namespace ConsumerConsole;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        try
         {
-            try
-            {
-                ConnectionWrapper connection = new ConnectionWrapper("amqp://guest:guest@localhost:5672");
-                Consumer consumer = new Consumer(connection, "send-name-queue");
-                consumer.ReadMessage((message) =>
-                {
-                    var name = message.Substring(message.LastIndexOf(',') + 1).Trim();
-                    Regex namePattern = new Regex(@"^[a-zA-Z]+(?:[\s]+[a-zA-Z]+)*$");
-                    bool isNameValid = namePattern.IsMatch(name);
-                    if (name.ToLower() == "exit")
-                    {
-                        //do nothing
-                    }
-                    else if (isNameValid)
-                    {
-                        Console.WriteLine($"Hello {name}, I am your father!");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"{name} is not a valid name");
-                    }
-                });
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"An error occured - {e.Message}");
-            }
+            ReadMessageUseCase readMessageUseCase = new ReadMessageUseCase(
+                new ReadMessageRepository(
+                    new Consumer(
+                        new ConnectionWrapper("amqp://guest:guest@localhost:5672"),
+                        "send-name-queue"
+                        )
+                    )
+                );
+            readMessageUseCase.Execute((message) => Console.WriteLine(message));
+            Console.ReadLine();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"An error occured - {e.Message}");
         }
     }
 }
