@@ -2,7 +2,7 @@
 
 namespace Sender.UseCases;
 
-public class SendMessageUseCase
+public class SendMessageUseCase : ISendMessageUseCase
 {
     private readonly ISendMessageRepository _sendMessageRepository;
 

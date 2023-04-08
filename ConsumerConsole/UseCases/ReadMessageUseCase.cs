@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Receiver.UseCases;
 
-public class ReadMessageUseCase
+public class ReadMessageUseCase : IReadMessageUseCase
 {
     private readonly IReadMessageRepository _readMessageRepository;
 

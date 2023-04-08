@@ -2,29 +2,34 @@
 using MessageQueueLibrary.Implementations;
 using Receiver.UseCases;
 using System.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using MessageQueueLibrary.Interfaces;
+using Receiver;
 
-namespace Receiver;
+using IHost host = CreateHostBuilder(args).Build();
+using var scope = host.Services.CreateScope();
 
-internal class Program
+var services = scope.ServiceProvider;
+static IHostBuilder CreateHostBuilder(string[] args)
 {
-    static void Main(string[] args)
-    {
-        try
+    var connectionURL = ConfigurationManager.AppSettings["ConnectionURL"]!;
+    var queue = ConfigurationManager.AppSettings["QueueName"]!;
+    return Host.CreateDefaultBuilder(args).ConfigureServices((_, services) =>
         {
-            string connectionURL = ConfigurationManager.AppSettings["ConnectionURL"]!;
-            string queueName = ConfigurationManager.AppSettings["QueueName"]!;
-            ReadMessageUseCase readMessageUseCase = new ReadMessageUseCase(
-                new ReadMessageRepository(
-                    new Consumer(
-                        new ConnectionWrapper(connectionURL), queueName)
-                    )
-                );
-            readMessageUseCase.Execute((message) => Console.WriteLine(message));
-            Console.ReadLine();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"An error occured - {e.Message}");
-        }
-    }
+            services.AddSingleton<IConnectionWrapper>(x => new ConnectionWrapper(connectionURL));
+            services.AddSingleton<IConsumer>(x => new Consumer(x.GetRequiredService<IConnectionWrapper>(), queue));
+            services.AddSingleton<IReadMessageRepository, ReadMessageRepository>();
+            services.AddSingleton<IReadMessageUseCase, ReadMessageUseCase>();
+            services.AddSingleton<App>();
+        });
+}
+
+try
+{
+    services.GetRequiredService<App>().Run(args);
+}
+catch (Exception e)
+{
+    Console.WriteLine($"An error occured - {e.Message}");
 }
