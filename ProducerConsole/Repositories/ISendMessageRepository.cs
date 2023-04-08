@@ -1,4 +1,4 @@
-﻿namespace ProducerConsole.Repositories;
+﻿namespace Sender.Repositories;
 
 public interface ISendMessageRepository
 {

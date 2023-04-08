@@ -1,7 +1,7 @@
-﻿using ConsumerConsole.Repositories;
+﻿using Receiver.Repositories;
 using System.Text.RegularExpressions;
 
-namespace ConsumerConsole.UseCases;
+namespace Receiver.UseCases;
 
 public class ReadMessageUseCase
 {

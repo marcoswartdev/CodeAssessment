@@ -1,4 +1,4 @@
-﻿namespace ConsumerConsole.Repositories;
+﻿namespace Receiver.Repositories;
 
 public interface IReadMessageRepository
 {

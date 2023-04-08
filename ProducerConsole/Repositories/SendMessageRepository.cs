@@ -1,6 +1,6 @@
 ﻿using MessageQueueLibrary.Interfaces;
 
-namespace ProducerConsole.Repositories;
+namespace Sender.Repositories;
 
 public class SendMessageRepository : ISendMessageRepository
 {
