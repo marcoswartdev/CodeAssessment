@@ -1,6 +1,6 @@
 ﻿using MessageQueueLibrary.Interfaces;
 
-namespace ConsumerConsole.Repositories;
+namespace Receiver.Repositories;
 
 public class ReadMessageRepository : IReadMessageRepository
 {

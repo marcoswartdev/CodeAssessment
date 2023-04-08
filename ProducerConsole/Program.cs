@@ -1,9 +1,9 @@
 ﻿using MessageQueueLibrary.Implementations;
-using ProducerConsole.Repositories;
-using ProducerConsole.UseCases;
+using Sender.Repositories;
+using Sender.UseCases;
 using System.Configuration;
 
-namespace ProducerConsole;
+namespace Sender;
 
 internal class Program
 {
@@ -16,7 +16,7 @@ internal class Program
             SendMessageUseCase sendMessageUseCase = new SendMessageUseCase(
                 new SendMessageRepository(
                     new Producer(
-                        new ConnectionWrapper(connectionURL),queueName)
+                        new ConnectionWrapper(connectionURL), queueName)
                     )
                 );
             string name;

@@ -1,6 +1,6 @@
-﻿using ProducerConsole.Repositories;
+﻿using Sender.Repositories;
 
-namespace ProducerConsole.UseCases;
+namespace Sender.UseCases;
 
 public class SendMessageUseCase
 {

@@ -1,9 +1,9 @@
-﻿using ConsumerConsole.Repositories;
-using ConsumerConsole.UseCases;
+﻿using Receiver.Repositories;
 using MessageQueueLibrary.Implementations;
+using Receiver.UseCases;
 using System.Configuration;
 
-namespace ConsumerConsole;
+namespace Receiver;
 
 internal class Program
 {
@@ -16,7 +16,7 @@ internal class Program
             ReadMessageUseCase readMessageUseCase = new ReadMessageUseCase(
                 new ReadMessageRepository(
                     new Consumer(
-                        new ConnectionWrapper(connectionURL),queueName)
+                        new ConnectionWrapper(connectionURL), queueName)
                     )
                 );
             readMessageUseCase.Execute((message) => Console.WriteLine(message));

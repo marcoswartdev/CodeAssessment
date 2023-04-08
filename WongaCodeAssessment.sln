@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProducerConsole", "ProducerConsole\ProducerConsole.csproj", "{2956F37F-95FF-4558-BE60-07029D44C786}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sender", "ProducerConsole\Sender.csproj", "{2956F37F-95FF-4558-BE60-07029D44C786}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsumerConsole", "ConsumerConsole\ConsumerConsole.csproj", "{9CC236B0-5BD8-4804-B615-F91868B0BD41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Receiver", "ConsumerConsole\Receiver.csproj", "{9CC236B0-5BD8-4804-B615-F91868B0BD41}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageQueueLibrary", "MessageQueueLibrary\MessageQueueLibrary.csproj", "{BED07DB2-AFB6-40A9-BAFD-BDAE9F73703B}"
 EndProject
@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{D92C1B
 	ProjectSection(SolutionItems) = preProject
 		App.config = App.config
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecieverTests", "ConsumerTests\RecieverTests.csproj", "{2EAA3AC9-5EF7-4DFB-AAE5-71FDDB0A5D82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenderTests", "SenderTests\SenderTests.csproj", "{D240BCC5-406D-4B4A-8C37-90833FE30BBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +36,14 @@ Global
 		{BED07DB2-AFB6-40A9-BAFD-BDAE9F73703B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BED07DB2-AFB6-40A9-BAFD-BDAE9F73703B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BED07DB2-AFB6-40A9-BAFD-BDAE9F73703B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EAA3AC9-5EF7-4DFB-AAE5-71FDDB0A5D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EAA3AC9-5EF7-4DFB-AAE5-71FDDB0A5D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EAA3AC9-5EF7-4DFB-AAE5-71FDDB0A5D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EAA3AC9-5EF7-4DFB-AAE5-71FDDB0A5D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D240BCC5-406D-4B4A-8C37-90833FE30BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D240BCC5-406D-4B4A-8C37-90833FE30BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D240BCC5-406D-4B4A-8C37-90833FE30BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D240BCC5-406D-4B4A-8C37-90833FE30BBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
