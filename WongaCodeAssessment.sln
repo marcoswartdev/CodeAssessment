@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{D92C1B
 	ProjectSection(SolutionItems) = preProject
 		App.config = App.config
 		docker-compose.yml = docker-compose.yml
+		Dockerfile1.dockerfile = Dockerfile1.dockerfile
+		Dockerfile2.dockerfile = Dockerfile2.dockerfile
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sender", "Sender\Sender.csproj", "{6B106EAB-867F-4DA4-A54E-A1D3FE36ED4B}"

@@ -14,11 +14,8 @@ public class App
     public void Run(string[] args)
     {
         string name;
-        while (true)
-        {
-            Console.WriteLine("Please enter your name: ");
-            name = Console.ReadLine() ?? "";
-            _sendMessageUseCase.Execute(name);
-       }
+        Console.WriteLine("Please enter your name: ");
+        name = Console.ReadLine() ?? "";
+        _sendMessageUseCase.Execute(name);
     }
 }

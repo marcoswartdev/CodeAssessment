@@ -13,6 +13,38 @@ services:
     networks:
         - rabbit_connection
 
+  sender:
+    image: sender-image
+    build:
+        context: .
+        dockerfile: Dockerfile1.dockerfile
+    container_name: 'sender-container'
+    stdin_open: true
+    tty: true
+    depends_on: 
+        - rabbitmq
+    volumes:
+        - ~/.docker-conf/sender/data/:/var/lib/sender/
+        - ~/.docker-conf/sender/log/:/var/log/sender
+    networks:
+        - rabbit_connection
+
+  reciever:
+    image: receiver-image
+    build:
+        context: .
+        dockerfile: Dockerfile2.dockerfile
+    container_name: 'receiver-container'
+    stdin_open: true
+    tty: true
+    depends_on: 
+        - rabbitmq
+    volumes:
+        - ~/.docker-conf/receiver/data/:/var/lib/receiver/
+        - ~/.docker-conf/receiver/log/:/var/log/receiver
+    networks:
+        - rabbit_connection
+
 networks:
   rabbit_connection:
     driver: bridge
