@@ -22,7 +22,7 @@ public class ConnectionWrapper : IConnectionWrapper
         }
         catch (BrokerUnreachableException)
         {
-            throw new Exception("Cound not connect to RabbitMQ. Please check if docker container is running with the correct ports.");
+            throw new Exception("Cound not connect to RabbitMQ. Please check the connection URL in app config.");
         }
     }
 
