@@ -19,6 +19,6 @@ public class App
             Console.WriteLine("Please enter your name: ");
             name = Console.ReadLine() ?? "";
             _sendMessageUseCase.Execute(name);
-        }
+       }
     }
 }
