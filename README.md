@@ -1,11 +1,17 @@
 # WongaCodeAssessment
+My system infomation
+
+- Windows 11
+- Visual studio 2022 community edition
+- Latest dotnet version 7.0.202
+- Latest Docker version 20.10.23, build 7155243
+
 How to run the project
 
-- Step 1: Please make sure you have docker installed on your computer (I have version 20.10.23, build 7155243 installed)
+- Step 1: Please make sure you have docker installed on your computer
 
-- Step 2: run the follow command "docker-compose up" in the root of the solution. This will setup the docker container for rabbitMQ
+- Step 2: Run the following command "docker-compose up -d" in a powershell terminal in the root of the solution. This will setup the docker container's for rabbitMQ, sender application and the receiver application.
 
-- Step 3: Visual studio has to be configured to run the both the Receiver and Sender projects simultaneously. To do this right click on the solution, then click on Configure Startup Projects. Then select the Multiple startup projects radio button and choose the start action for both projects and click apply.
+- Step 3: Run "start powershell {docker start receiver-container -a -i} ; start powershell {docker start sender-container -a -i}" in your powershell terminal. This will start the reciever and sender container in two new powershell terminals and run them in attached interactive mode allowing you to input your name into the sender container terminal and seeing the response in the receiver container terminal. If this does not work make sure the rabbit container is running. It should already be running from step 2 but if this is not the case please start the rabbit container before running the sender and receiver.
 
-- Step 4: At the top next to the start button make sure to select the "Multiple Startup Projects" from the drop down and click the start button. If all goes well you should see two terminals that pop up. The one asking for you to enter your name and the other one will be blank until you have entered a name.
-
+If you experience any problems running this project on your machine or have any questions please feel free to reach out to me I would be happy to help.
