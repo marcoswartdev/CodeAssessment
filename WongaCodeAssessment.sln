@@ -8,15 +8,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{D92C1B11-F0D0-45BD-9231-9BC417AA635B}"
 	ProjectSection(SolutionItems) = preProject
 		App.config = App.config
+		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sender", "Sender\Sender.csproj", "{6B106EAB-867F-4DA4-A54E-A1D3FE36ED4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sender", "Sender\Sender.csproj", "{6B106EAB-867F-4DA4-A54E-A1D3FE36ED4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Receiver", "Receiver\Receiver.csproj", "{0BB9BEDC-3F7F-4FC5-9695-0917982C6EEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Receiver", "Receiver\Receiver.csproj", "{0BB9BEDC-3F7F-4FC5-9695-0917982C6EEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenderTests", "SenderTests\SenderTests.csproj", "{75BEB616-4E61-42B7-A3BB-F7C63C3E03F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenderTests", "SenderTests\SenderTests.csproj", "{75BEB616-4E61-42B7-A3BB-F7C63C3E03F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiverTests", "ReceiverTests\ReceiverTests.csproj", "{76BB03BF-4368-4941-AC01-BBE6B9857F52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiverTests", "ReceiverTests\ReceiverTests.csproj", "{76BB03BF-4368-4941-AC01-BBE6B9857F52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
