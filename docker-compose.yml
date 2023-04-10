@@ -17,7 +17,7 @@ services:
     image: sender-image
     build:
         context: .
-        dockerfile: Dockerfile1.dockerfile
+        dockerfile: Sender.dockerfile
     container_name: 'sender-container'
     stdin_open: true
     tty: true
@@ -33,7 +33,7 @@ services:
     image: receiver-image
     build:
         context: .
-        dockerfile: Dockerfile2.dockerfile
+        dockerfile: Receiver.dockerfile
     container_name: 'receiver-container'
     stdin_open: true
     tty: true
